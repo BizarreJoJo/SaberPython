@@ -1,6 +1,9 @@
 import yaml
 
 def load_file(path):
-    with open(path) as f:
-        result = yaml.safe_load(f)        
-    return result
+    try:
+        with open(path) as f:
+            result = yaml.safe_load(f)        
+        return result
+    except FileNotFoundError:
+        exit('No such file: ' + path)
